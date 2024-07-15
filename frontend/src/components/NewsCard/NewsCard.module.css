@@ -1,0 +1,53 @@
+.newsCard {
+  display: flex;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 20px;
+  /* justify-content: space-around; */
+}
+
+.newsCardImageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.newsCardImage {
+  border-radius: 8px;
+  width: 300px;
+  object-fit: cover;
+}
+
+.newsCardInfo {
+  display: block;
+  margin-left: 50px;
+}
+
+.newsCardInfo h2 {
+  margin: 0;
+}
+
+.newsCardInfo h2 a {
+  color: white;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .newsCardInfo p,
+  .newsCardInfo a {
+    font-size: small;
+  }
+
+  .newsCardInfo h2 {
+    font-size: larger;
+  }
+
+
+  .newsCard {
+    flex-direction: column;
+    /* justify-content: space-around; */
+  }
+
+  .newsCardInfo {
+    margin-left: 0;
+  }
+}
