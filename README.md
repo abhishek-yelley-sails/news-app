@@ -3,13 +3,13 @@
 - [x] 1. Create a new react project.
 - [ ] 2. Create a Login, SignUp, Home, and profile screen. Use react routing to navigate between screens.
   - [ ] a. Home
-  - [ ] b. Routing
+  - [x] b. Routing
   - [ ] c. Login/SignUp
     - [ ] i. Create backend for user storage
     - [ ] ii. JWT for session management 
 - [ ] 3. Store the user details in context and use them across the other screens
 - [ ] 4. Use Query client to call a news API to get the data 
-- [ ] 5. Show the data in Home as a card for each array index(left side image, right side Title, description, author at the end link URL to visit the site). User can scroll down to see more news. **(Pagination?)**
+- [x] 5. Show the data in Home as a card for each array index(left side image, right side Title, description, author at the end link URL to visit the site). User can scroll down to see more news. **(Pagination?)**
 - [ ] 6. Click on the card to open a modal with the details of the selected data index.
 (Top full-length image, title below that, and all other details )
 - [ ] 7. The profile screen shows the user's details, allowing them to update their details.
