@@ -5,8 +5,8 @@
   - [ ] a. Home
   - [x] b. Routing
   - [ ] c. Login/SignUp
-    - [ ] i. Create backend for user storage
-    - [ ] ii. JWT for session management 
+    - [x] i. Create backend for user storage
+    - [x] ii. JWT for session management 
 - [ ] 3. Store the user details in context and use them across the other screens
 - [ ] 4. Use Query client to call a news API to get the data 
 - [x] 5. Show the data in Home as a card for each array index(left side image, right side Title, description, author at the end link URL to visit the site). User can scroll down to see more news. **(Pagination?)**
