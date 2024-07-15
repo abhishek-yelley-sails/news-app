@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px 0px 10px;
+  background-color: rgb(78, 69, 60);
+}
+
+.left {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.left>ul {
+  padding: 0;
+  margin: 0;
+}
+
+.left>li {
+  text-decoration: none;
+  padding: 10px;
+  align-self: center;
+}
+
+.left a {
+  text-decoration: none;
+  color: white;
+  align-self: center;
+}
