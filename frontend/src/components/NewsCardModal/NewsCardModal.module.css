@@ -1,0 +1,28 @@
+.newsCardModal {
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  width: 80vw;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px;
+  font-size: larger;
+  border-radius: 2px;
+  cursor: pointer;
+}

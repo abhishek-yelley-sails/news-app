@@ -1,0 +1,34 @@
+.inputContainer {
+  display: block;
+  /* border: 2px solid red; */
+  margin: 20px 0px 20px 0px;
+  padding: 5px;
+}
+
+.inputContainer input {
+  background-color: antiquewhite;
+  color: black;
+  border-radius: 0 8px 8px 8px;
+  padding: 10px;
+  margin: 0;
+  border: none;
+  font-size: large;
+  /* outline: none; */
+}
+
+.inputContainer input:focus {
+  background-color: lightblue;
+  outline: 3px solid white;
+  /* border: 3px solid red; */
+}
+
+.inputContainer label {
+  margin: 0;
+  color: black;
+  background-color: antiquewhite;
+  border-radius: 8px 8px 0 0;
+  padding: 5px;
+  font-weight: 500;
+  font-size: larger;
+  cursor: pointer;
+}

@@ -1,0 +1,13 @@
+.subHeading {
+  text-align: center;
+  align-self: center;
+  padding: 5px;
+  margin: 0px;
+  background-color: green;
+  border-radius: 8px;
+}
+
+.subHeadingContainer {
+  display: flex;
+  justify-content: center;
+}

@@ -1,19 +1,20 @@
 # News-App
 
 - [x] 1. Create a new react project.
-- [ ] 2. Create a Login, SignUp, Home, and profile screen. Use react routing to navigate between screens.
-  - [ ] a. Home
+- [x] 2. Create a Login, SignUp, Home, and profile screen. Use react routing to navigate between screens.
+  - [x] a. Home
   - [x] b. Routing
-  - [ ] c. Login/SignUp
+  - [x] c. Login/SignUp
     - [x] i. Create backend for user storage
     - [x] ii. JWT for session management 
-- [ ] 3. Store the user details in context and use them across the other screens
-- [ ] 4. Use Query client to call a news API to get the data 
+  - [x] d. Profile 
+- [x] 3. Store the user details in context and use them across the other screens
+- [x] 4. Use Query client to call a news API to get the data 
 - [x] 5. Show the data in Home as a card for each array index(left side image, right side Title, description, author at the end link URL to visit the site). User can scroll down to see more news. **(Pagination?)**
-- [ ] 6. Click on the card to open a modal with the details of the selected data index.
+- [x] 6. Click on the card to open a modal with the details of the selected data index.
 (Top full-length image, title below that, and all other details )
-- [ ] 7. The profile screen shows the user's details, allowing them to update their details.
-- [ ] 8. Log out to go back to the login screen and clear the context.
+- [x] 7. The profile screen shows the user's details, allowing them to update their details.
+- [x] 8. Log out to go back to the login screen and clear the context.
  
 API to use
 

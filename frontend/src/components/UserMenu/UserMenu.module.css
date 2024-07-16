@@ -1,11 +1,17 @@
 .profileIcon {
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.userMenuContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .userMenu {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
 }

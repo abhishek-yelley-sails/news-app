@@ -1,9 +1,37 @@
 .newsCard {
   display: flex;
-  border: 1px solid white;
-  border-radius: 8px;
   padding: 20px;
-  /* justify-content: space-around; */
+  cursor: pointer;
+}
+
+.newsCardContainer {
+  border: 2px solid white;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.newsCardContainer a {
+  text-decoration: none;
+}
+
+.articleLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: greenyellow;
+  color: black;
+  font-size: large;
+  font-weight: 700;
+  transition: all 0.1s;
+  height: 5vh;
+}
+
+.articleLink:hover {
+  background-color: green;
+  color: white;
+  outline: 3px solid yellow;
+  border-radius: 0 0 8px 8px;
 }
 
 .newsCardImageContainer {
@@ -14,7 +42,9 @@
 .newsCardImage {
   border-radius: 8px;
   width: 300px;
+  height: 300px;
   object-fit: cover;
+  align-self: center;
 }
 
 .newsCardInfo {
@@ -30,17 +60,19 @@
   color: white;
 }
 
-@media only screen and (max-width: 768px) {
-
+@media only screen and (max-width: 1000px) {
   .newsCardInfo p,
   .newsCardInfo a {
     font-size: small;
+  }
+  .newsCardImage {
+    width: 200px;
+    height: 200px;
   }
 
   .newsCardInfo h2 {
     font-size: larger;
   }
-
 
   .newsCard {
     flex-direction: column;

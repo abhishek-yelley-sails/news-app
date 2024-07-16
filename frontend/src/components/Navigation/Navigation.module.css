@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0px 10px 0px 10px;
-  background-color: rgb(78, 69, 60);
+  background-color: rgb(27, 80, 43);
 }
 
 .left {
@@ -12,12 +12,12 @@
   margin: 0;
 }
 
-.left>ul {
+.left > ul {
   padding: 0;
   margin: 0;
 }
 
-.left>li {
+.left > li {
   text-decoration: none;
   padding: 10px;
   align-self: center;
@@ -27,4 +27,12 @@
   text-decoration: none;
   color: white;
   align-self: center;
+  font-weight: 600;
+  font-size: larger;
+  padding: 5px;
+}
+
+.active {
+  background-color: rgb(141, 172, 6);
+  border-radius: 8px;
 }

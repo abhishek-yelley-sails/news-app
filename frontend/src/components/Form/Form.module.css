@@ -1,0 +1,40 @@
+.formContainer {
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid white;
+  margin: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  font-size: large;
+  background-color: rgb(128, 206, 11);
+  color: black;
+  font-weight: 500;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: 3px solid white;
+  background-color: rgb(50, 81, 5);
+  color: white;
+}
+
+.switchLink {
+  text-align: center;
+  margin: 20px 0px 20px 0px;
+}
+
+.loading {
+  background-color: grey;
+  cursor: wait;
+  color: white;
+}
