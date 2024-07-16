@@ -1,8 +1,10 @@
 import { Request } from "express";
 
 export interface SignupInfo {
+  name: string,
   email: string,
-  password: string
+  password: string,
+  repeatPassword: string,
 }
 
 export interface Errors {
@@ -10,6 +12,7 @@ export interface Errors {
 }
 
 export interface User {
+  name: string,
   email: string,
   password: string,
   userId: string,

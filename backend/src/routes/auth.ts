@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { SignupInfo, Errors } from "../definions";
-import { isExistingUser, isValidEmail, isValidPassword } from "../util/validation.js";
+import { isExistingUser, isValidEmail, isValidPassword, isPasswordMatching, isValidName, cleanSpaces } from "../util/validation.js";
 import { errorBuilder } from "../util/error.js";
 import { addUser, getUser } from "../data/user.js";
 import { createJSONToken, checkPassword } from "../util/auth.js";
@@ -8,7 +8,11 @@ import { createJSONToken, checkPassword } from "../util/auth.js";
 const router = Router();
 
 router.post("/signup", async (req, res, next) => {
-  const data: SignupInfo = req.body;
+  const rawData: SignupInfo = req.body;
+
+  cleanSpaces(rawData as SignupInfo & { [key: string]: string });
+
+  const data = rawData;
   let errors: Errors = {};
 
   if (!isValidEmail(data.email)) {
@@ -19,6 +23,12 @@ router.post("/signup", async (req, res, next) => {
   }
   else if (!isValidPassword(data.password)) {
     errors.password = 'Invalid password. Must be at least 6 characters long.';
+  }
+  else if (!isPasswordMatching(data.password, data.repeatPassword)) {
+    errors.password = 'Both password fields need to match.';
+  }
+  else if (!isValidName(data.name)) {
+    errors.name = 'Invalid Name!: ' + data.name;
   }
 
   if (Object.keys(errors).length > 0) {
