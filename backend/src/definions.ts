@@ -25,3 +25,8 @@ export interface Token {
 export interface TokenRequest extends Request {
   token: Token,
 }
+
+export interface EditableUserInfo {
+  name: string,
+  email: string,
+}

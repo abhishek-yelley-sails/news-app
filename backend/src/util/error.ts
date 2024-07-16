@@ -25,6 +25,15 @@ class MissingData {
   }
 }
 
+class InvalidEditRequest {
+  message: string;
+  status: number;
+  constructor(message: string) {
+    this.message = message;
+    this.status = 401;
+  }
+}
+
 export function errorBuilder(message: string, errors: { [key: string]: string }) {
   return {
     error: true,
@@ -33,4 +42,4 @@ export function errorBuilder(message: string, errors: { [key: string]: string })
   }
 }
 
-export { NotFoundError, NotAuthError, MissingData };
+export { NotFoundError, NotAuthError, MissingData, InvalidEditRequest };
