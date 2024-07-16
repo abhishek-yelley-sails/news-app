@@ -26,7 +26,8 @@ export async function addUser(data: SignupInfo): Promise<User> {
   if (!storedData.users) {
     storedData.users = [];
   }
-  const user: User = { ...data, password: hashedPw, userId };
+  const { repeatPassword, ...userData } = data;
+  const user: User = { ...userData, password: hashedPw, userId };
   storedData.users.push(user);
   await writeData(storedData);
   return user;
