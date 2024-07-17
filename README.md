@@ -1,5 +1,19 @@
 # News-App
 
+## Steps to Run:
+
+1. Go to `/frontend` and run `npm install`
+2. Go to `/backend` and run `npm install`
+3. Create a `.env` in `/frontend` and paste `VITE_BACKEND_API="http://localhost:8080/"`
+4. Create a `.env` in `/backend` and paste:
+  ```
+  PORT=8080
+  JWT_KEY=<your-secret>
+  API_KEY=<your-newapi.org-api-key>
+
+  ```
+
+
 - [x] 1. Create a new react project.
 - [x] 2. Create a Login, SignUp, Home, and profile screen. Use react routing to navigate between screens.
   - [x] a. Home
