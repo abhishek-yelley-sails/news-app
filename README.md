@@ -12,7 +12,11 @@
   API_KEY=<your-newapi.org-api-key>
 
   ```
+5. Run `tsc -w` in `/backend`
+6. In another terminal, run `npm run dev` in `/backend`
+7. In another terminal, run `npm run dev` in `/frontend`
 
+## Task
 
 - [x] 1. Create a new react project.
 - [x] 2. Create a Login, SignUp, Home, and profile screen. Use react routing to navigate between screens.
