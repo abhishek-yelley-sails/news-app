@@ -38,4 +38,8 @@ export function cleanSpaces(rawData: SignupInfo & { [key: string]: string }) {
   }
 }
 
+export function isValidCountry(country: string) {
+  return country.length === 2;
+}
+
 export const isValidPassword = isValidText.bind(null, 6);

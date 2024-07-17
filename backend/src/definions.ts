@@ -14,6 +14,7 @@ export interface Errors {
 export interface User {
   name: string,
   email: string,
+  country?: string,
   password: string,
   userId: string,
 }
@@ -27,6 +28,7 @@ export interface TokenRequest extends Request {
 }
 
 export interface EditableUserInfo {
-  name: string,
-  email: string,
+  name?: string,
+  email?: string,
+  country?: string,
 }

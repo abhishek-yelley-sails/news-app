@@ -5,7 +5,7 @@ import { User, SignupInfo, EditableUserInfo } from "../definions";
 import { NotFoundError, InvalidEditRequest } from "../util/error.js";
 import { readData, writeData } from "./util.js";
 import { checkPassword } from "../util/auth.js";
-import { cleanSpaces, isValidEmail, isValidName, isValidPassword } from "../util/validation.js";
+import { cleanSpaces, isValidCountry, isValidEmail, isValidName, isValidPassword } from "../util/validation.js";
 
 export async function getUser(email: string) {
   const storedData = await readData();
@@ -86,6 +86,12 @@ export async function editUserInfo(userId: User["userId"], info: EditableUserInf
       throw new InvalidEditRequest("Invalid Email!");
     }
     user.email = info.email;
+  }
+  if (info.country) {
+    if (!isValidCountry(info.country)) {
+      throw new InvalidEditRequest("Invalid Country!");
+    }
+    user.country = info.country;
   }
   await updateUser(user);
   return await getUserById(userId);
