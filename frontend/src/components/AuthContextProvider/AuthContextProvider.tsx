@@ -76,6 +76,9 @@ export default function AuthContextProvider({
           changeUserId(data.userId);
           changeEmail(data.email);
           changeName(data.name);
+          if (data.country) {
+            changeCountry(data.country);
+          }
           changeLoggedIn(true);
         }
       } catch (err) {
@@ -93,6 +96,7 @@ export default function AuthContextProvider({
     changeUserId,
     changeEmail,
     changeName,
+    changeCountry,
     getToken,
     changeLoggedIn,
     logout,
