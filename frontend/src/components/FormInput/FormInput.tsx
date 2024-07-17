@@ -14,7 +14,6 @@ export default function FormInput({
   return (
     <div className={cssStyles.inputContainer}>
       <label htmlFor={id}>{label}</label>
-      <br />
       <input
         type={type}
         id={id}

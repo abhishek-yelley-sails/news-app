@@ -7,6 +7,13 @@ import Login from "./components/Login/Login";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Signup from "./components/Signup/Signup";
 import Profile from "./components/Profile/Profile";
+import { createTheme, ThemeProvider } from "@mui/material";
+
+const theme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 const router = createBrowserRouter([
   {
@@ -55,7 +62,9 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthContextProvider>
-        <RouterProvider router={router} />
+        <ThemeProvider theme={theme}>
+          <RouterProvider router={router} />
+        </ThemeProvider>
       </AuthContextProvider>
     </QueryClientProvider>
   );

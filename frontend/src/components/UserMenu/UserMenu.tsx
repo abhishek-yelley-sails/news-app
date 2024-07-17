@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { Logout } from "@mui/icons-material";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // export default function UserMenu() {
 //   const authCtx = useAuth();
@@ -42,6 +42,7 @@ export default function UserMenu() {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
   const authCtx = useAuth();
+  const navigate = useNavigate();
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -102,14 +103,14 @@ export default function UserMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem
+          onClick={() => {
+            handleClose();
+            navigate("/profile");
+          }}
+        >
           <Avatar />
-          <Link
-            to="/profile"
-            style={{ color: "black", textDecoration: "none" }}
-          >
-            Profile
-          </Link>
+          Profile
         </MenuItem>
         <Divider />
         <MenuItem

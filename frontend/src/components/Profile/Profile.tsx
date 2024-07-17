@@ -13,6 +13,8 @@ import cssStyles from "./Profile.module.css";
 import { useMutation } from "react-query";
 import makeRequest from "../../api/axiosInstance";
 import { AxiosError } from "axios";
+import { SelectChangeEvent } from "@mui/material";
+import CountrySelect from "../CountrySelect/CountrySelect";
 
 export default function Profile() {
   const authCtx = useAuth();
@@ -23,6 +25,7 @@ export default function Profile() {
   );
   const [passwordErrors, setPasswordErrors] =
     useState<UserEditResponseFailed | null>(null);
+  const [country, setCountry] = useState(authCtx?.country || "us");
   const infoMutation = useMutation({
     mutationFn: (data: UserInfoEditData) => {
       return makeRequest("/user/info/edit", data, authCtx?.getToken(), "patch");
@@ -30,6 +33,7 @@ export default function Profile() {
     onSuccess: (data: UserInfoEditResponseSuccess) => {
       authCtx?.changeEmail(data.user.userId);
       authCtx?.changeName(data.user.name);
+      authCtx?.changeCountry(data.user.country || "us");
     },
     onError: (response: AxiosError) => {
       const data = response.response?.data as UserEditResponseFailed;
@@ -62,6 +66,7 @@ export default function Profile() {
     const data: UserInfoEditData = {
       email: formData.get("email") as string,
       name: formData.get("name") as string,
+      country: formData.get("country") as string,
     };
     infoMutation.mutate(data);
   }
@@ -73,6 +78,9 @@ export default function Profile() {
       newPassword: formData.get("new-password") as string,
     };
     passwordMutation.mutate(data);
+  }
+  function handleCountryChange(event: SelectChangeEvent) {
+    setCountry(event.target.value);
   }
   return (
     <>
@@ -101,6 +109,7 @@ export default function Profile() {
             name={"email"}
             defaultValue={authCtx?.email}
           />
+          <CountrySelect country={country} handleChange={handleCountryChange} />
         </Form>
       </div>
       <div className={cssStyles.subHeadingContainer}>

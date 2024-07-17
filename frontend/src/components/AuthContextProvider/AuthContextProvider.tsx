@@ -14,41 +14,46 @@ export default function AuthContextProvider({
   const [userId, setUserId] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [country, setCountry] = useState("us");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cookies, setCookie] = useCookies(["token"]);
 
-  const changeLoggedIn = useCallback(function changeLoggedIn(state: boolean) {
+  const changeLoggedIn = useCallback(function (state: boolean) {
     setIsLoggedIn(state);
   }, []);
 
-  const changeUserId = useCallback(function changeId(newId: string) {
+  const changeUserId = useCallback(function (newId: string) {
     setUserId(newId);
   }, []);
 
-  const changeEmail = useCallback(function changeEmail(newEmail: string) {
+  const changeEmail = useCallback(function (newEmail: string) {
     setEmail(newEmail);
   }, []);
 
-  const changeName = useCallback(function changeName(newName: string) {
+  const changeName = useCallback(function (newName: string) {
     setName(newName);
   }, []);
 
+  const changeCountry = useCallback(function (newCountry: string) {
+    setCountry(newCountry);
+  }, []);
+
   const getToken = useCallback(
-    function getToken() {
+    function () {
       return cookies.token;
     },
     [cookies.token]
   );
 
   const changeToken = useCallback(
-    function changeToken(token: string) {
+    function (token: string) {
       setCookie("token", token, { path: "/" });
     },
     [setCookie]
   );
 
   const logout = useCallback(
-    function logout() {
+    function () {
       changeToken("");
       changeUserId("");
       changeEmail("");
@@ -101,6 +106,8 @@ export default function AuthContextProvider({
     changeEmail,
     name,
     changeName,
+    country,
+    changeCountry,
     getToken,
     changeToken,
     isLoggedIn,

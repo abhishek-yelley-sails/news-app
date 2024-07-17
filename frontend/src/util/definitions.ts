@@ -5,6 +5,8 @@ export interface AuthContextType {
   changeEmail: (newEmail: string) => void;
   name: string;
   changeName: (newName: string) => void;
+  country: string;
+  changeCountry: (newCountry: string) => void;
   getToken: () => string | undefined;
   changeToken: (token: string) => void;
   isLoggedIn: boolean;
@@ -35,6 +37,7 @@ export interface SignupData extends LoginData {
 export interface UserInfoEditData {
   name?: string;
   email?: string;
+  country?: string;
 }
 
 export interface UserPasswordEditData {
@@ -123,4 +126,5 @@ export interface UserInfo {
   email: string;
   userId: string;
   name: string;
+  country?: string;
 }

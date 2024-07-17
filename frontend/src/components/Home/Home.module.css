@@ -6,3 +6,10 @@
   display: flex;
   justify-content: center;
 }
+
+.optionsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

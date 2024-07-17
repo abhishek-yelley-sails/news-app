@@ -4,14 +4,18 @@ import makeRequest from "../../api/axiosInstance";
 import { useAuth } from "../AuthContextProvider/useAuth";
 import { NewsArticle } from "../../util/definitions";
 import cssStyles from "./Home.module.css";
+import { useState } from "react";
+import { SelectChangeEvent } from "@mui/material";
+import CountrySelect from "../CountrySelect/CountrySelect";
 
 export default function Home() {
   const authCtx = useAuth();
+  const [country, setCountry] = useState(authCtx?.country || "us");
   const query = useQuery({
     queryFn: () => {
-      return makeRequest("/news/top", null, authCtx?.getToken());
+      return makeRequest("/news/top/" + country, null, authCtx?.getToken());
     },
-    queryKey: ["news", "top"],
+    queryKey: ["news", { type: "top", country }],
   });
   let content = <></>;
   if (query.isLoading) {
@@ -38,12 +42,18 @@ export default function Home() {
         />
       ));
   }
+  function handleChange(event: SelectChangeEvent) {
+    setCountry(event.target.value);
+  }
   return (
-    <>
+    <main>
       <h1 style={{ textAlign: "center" }}>News Articles</h1>
+      <div className={cssStyles.optionsContainer}>
+        <CountrySelect country={country} handleChange={handleChange} />
+      </div>
       <div className={cssStyles.container}>
         <div className={cssStyles.newsCards}>{content}</div>
       </div>
-    </>
+    </main>
   );
 }

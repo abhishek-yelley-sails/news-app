@@ -6,7 +6,7 @@ import { useAuth } from "../AuthContextProvider/useAuth";
 export default function Navigation() {
   const authCtx = useAuth();
   return (
-    <header>
+    <header className={cssStyles.header}>
       <nav className={cssStyles.navbar}>
         <ul className={cssStyles.left}>
           <li>
