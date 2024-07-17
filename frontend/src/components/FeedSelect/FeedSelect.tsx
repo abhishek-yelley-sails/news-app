@@ -1,7 +1,7 @@
 import { MenuItem, SelectChangeEvent } from "@mui/material";
 import InputSelect from "../InputSelect/InputSelect";
 
-export default function CountrySelect({
+export default function FeedSelect({
   value,
   handleChange,
 }: {
@@ -10,13 +10,13 @@ export default function CountrySelect({
 }) {
   return (
     <InputSelect
-      label={"Country"}
-      name={"country"}
+      label={"Feed"}
+      name={"feed"}
       value={value}
       handleChange={handleChange}
     >
-      <MenuItem value={"in"}>India</MenuItem>
-      <MenuItem value={"us"}>America</MenuItem>
+      <MenuItem value={"top"}>Top</MenuItem>
+      <MenuItem value={"search"}>Search</MenuItem>
     </InputSelect>
   );
 }

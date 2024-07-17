@@ -109,7 +109,7 @@ export default function Profile() {
             name={"email"}
             defaultValue={authCtx?.email}
           />
-          <CountrySelect country={country} handleChange={handleCountryChange} />
+          <CountrySelect value={country} handleChange={handleCountryChange} />
         </Form>
       </div>
       <div className={cssStyles.subHeadingContainer}>

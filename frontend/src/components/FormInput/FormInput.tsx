@@ -1,27 +1,11 @@
 import { useState } from "react";
 import { FormInputType } from "../../util/definitions";
-import cssStyles from "./FormInput.module.css";
+import FormInputBasic from "../FormInputBasic/FormInputBasic";
 
-export default function FormInput({
-  id,
-  label,
-  type = "text",
-  name,
-  defaultValue,
-  ...props
-}: FormInputType) {
-  const [value, setValue] = useState(defaultValue || "");
-  return (
-    <div className={cssStyles.inputContainer}>
-      <label htmlFor={id}>{label}</label>
-      <input
-        type={type}
-        id={id}
-        name={name}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        {...props}
-      />
-    </div>
-  );
+export default function FormInput(props: FormInputType) {
+  const [value, setValue] = useState(props.defaultValue || "");
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setValue(event.target.value);
+  }
+  return <FormInputBasic value={value} onChange={handleChange} {...props} />;
 }

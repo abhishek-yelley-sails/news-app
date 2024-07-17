@@ -7,15 +7,29 @@ import cssStyles from "./Home.module.css";
 import { useState } from "react";
 import { SelectChangeEvent } from "@mui/material";
 import CountrySelect from "../CountrySelect/CountrySelect";
+import SettingsAccordian from "../SettingsAccordian/SettingsAccordian";
+import FeedSelect from "../FeedSelect/FeedSelect";
+import SearchBox from "../SearchBox/SearchBox";
+import { useDebouncedCallback } from "use-debounce";
 
 export default function Home() {
   const authCtx = useAuth();
   const [country, setCountry] = useState(authCtx?.country || "us");
+  const [feed, setFeed] = useState("top");
+  const [accordian, setAccordian] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+
+  let url = "";
+  if (feed === "top") {
+    url = "/news/top/" + country;
+  } else {
+    url = "/news/search?q=" + searchValue;
+  }
   const query = useQuery({
     queryFn: () => {
-      return makeRequest("/news/top/" + country, null, authCtx?.getToken());
+      return makeRequest(url, null, authCtx?.getToken());
     },
-    queryKey: ["news", { type: "top", country }],
+    queryKey: ["news", { type: "top", country, searchValue }],
   });
   let content = <></>;
   if (query.isLoading) {
@@ -42,14 +56,41 @@ export default function Home() {
         />
       ));
   }
-  function handleChange(event: SelectChangeEvent) {
+  function handleCountryChange(event: SelectChangeEvent) {
     setCountry(event.target.value);
+  }
+  function handleFeedChange(event: SelectChangeEvent) {
+    setFeed(event.target.value);
+    setSearchValue("");
+  }
+  const handleSearch = useDebouncedCallback((term: string) => {
+    setSearchValue(term);
+  }, 300);
+  function handleAccordianChange(
+    event: React.SyntheticEvent,
+    expanded: boolean
+  ) {
+    event;
+    setAccordian(expanded);
   }
   return (
     <main>
       <h1 style={{ textAlign: "center" }}>News Articles</h1>
-      <div className={cssStyles.optionsContainer}>
-        <CountrySelect country={country} handleChange={handleChange} />
+      <div className={cssStyles.container}>
+        <SettingsAccordian
+          accordian={accordian}
+          handleChange={handleAccordianChange}
+        >
+          <div className={cssStyles.optionsContainer}>
+            <FeedSelect value={feed} handleChange={handleFeedChange} />
+          </div>
+          {feed === "top" && (
+            <CountrySelect value={country} handleChange={handleCountryChange} />
+          )}
+          {feed === "search" && (
+            <SearchBox handleChange={(e) => handleSearch(e.target.value)} />
+          )}
+        </SettingsAccordian>
       </div>
       <div className={cssStyles.container}>
         <div className={cssStyles.newsCards}>{content}</div>

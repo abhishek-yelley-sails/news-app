@@ -1,12 +1,3 @@
-.newsCards {
-  width: 65vw;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-}
-
 .optionsContainer {
   display: flex;
   flex-direction: row;

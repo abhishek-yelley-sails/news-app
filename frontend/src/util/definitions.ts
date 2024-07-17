@@ -19,9 +19,15 @@ export interface FormInputType {
   label: string;
   type: "text" | "email" | "password";
   name: string;
+  color?: string;
   placeholder?: string;
   defaultValue?: string;
   autoFocus?: boolean;
+}
+
+export interface FormInputBasicType extends FormInputType {
+  value?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export interface LoginData {
