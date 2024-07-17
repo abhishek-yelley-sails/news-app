@@ -7,13 +7,9 @@ import cssStyles from "./Home.module.css";
 import { useState } from "react";
 import { SelectChangeEvent } from "@mui/material";
 import CountrySelect from "../CountrySelect/CountrySelect";
-// import SettingsAccordian from "../SettingsAccordian/SettingsAccordian";
-// import FeedSelect from "../FeedSelect/FeedSelect";
 import SearchBox from "../SearchBox/SearchBox";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
 import { useDebouncedCallback } from "use-debounce";
+import FeedTabs from "../FeedTabs/FeedTabs";
 
 export default function Home() {
   const authCtx = useAuth();
@@ -31,6 +27,7 @@ export default function Home() {
   } else {
     url = "/news/search?q=" + searchValue;
   }
+
   const query = useQuery({
     queryFn: () => {
       return makeRequest(url, null, authCtx?.getToken());
@@ -72,15 +69,17 @@ export default function Home() {
     <main>
       <h1 style={{ textAlign: "center" }}>News Articles</h1>
       <div className={cssStyles.container}>
-        <BasicTabs
+        <FeedTabs
           tabs={[
             {
               label: "Top",
               element: (
-                <CountrySelect
-                  value={country}
-                  handleChange={handleCountryChange}
-                />
+                <div className={cssStyles.optionsContainer}>
+                  <CountrySelect
+                    value={country}
+                    handleChange={handleCountryChange}
+                  />
+                </div>
               ),
             },
             {
@@ -98,75 +97,5 @@ export default function Home() {
         <div className={cssStyles.newsCards}>{content}</div>
       </div>
     </main>
-  );
-}
-
-function CustomTabPanel(props: {
-  children: React.ReactNode;
-  value: number;
-  index: number;
-}) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-    </div>
-  );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
-function BasicTabs({
-  tabs,
-  value,
-  handleFeedChange,
-}: {
-  tabs: Array<{ label: string; element: React.ReactNode }>;
-  value: number;
-  handleFeedChange: (value: number) => void;
-}) {
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    event;
-    handleFeedChange(newValue);
-  };
-
-  return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="Feed Selection Tab"
-        >
-          {tabs.map(
-            (
-              tab: { label: string; element: React.ReactNode },
-              index: number
-            ) => (
-              <Tab key={index} label={tab.label} {...a11yProps(index)} />
-            )
-          )}
-        </Tabs>
-      </Box>
-      {tabs.map(
-        (tab: { label: string; element: React.ReactNode }, index: number) => (
-          <CustomTabPanel key={index} value={value} index={index}>
-            {tab.element}
-          </CustomTabPanel>
-        )
-      )}
-    </Box>
   );
 }

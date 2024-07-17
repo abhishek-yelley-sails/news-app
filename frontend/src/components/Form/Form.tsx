@@ -44,10 +44,19 @@ export default function Form({
           )}
         </div>
       </form>
-      {errors && <p>{errors.message}</p>}
+      {errors && (
+        <p style={{ fontWeight: 500, color: "red", textAlign: "center" }}>
+          {errors.message}
+        </p>
+      )}
       {errors?.errors &&
         Object.values(errors.errors).map((item: string) => (
-          <p key={item}>{item}</p>
+          <p
+            key={item}
+            style={{ fontWeight: 500, color: "red", textAlign: "center" }}
+          >
+            {item}
+          </p>
         ))}
     </div>
   );

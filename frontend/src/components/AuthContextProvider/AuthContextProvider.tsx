@@ -58,9 +58,17 @@ export default function AuthContextProvider({
       changeUserId("");
       changeEmail("");
       changeName("");
+      changeCountry("us");
       changeLoggedIn(false);
     },
-    [changeToken, changeUserId, changeEmail, changeName, changeLoggedIn]
+    [
+      changeToken,
+      changeUserId,
+      changeEmail,
+      changeName,
+      changeLoggedIn,
+      changeCountry,
+    ]
   );
 
   useEffect(() => {
